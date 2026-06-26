@@ -7,8 +7,8 @@ class FileManager{
 private:
     std::string fileName;
 public:
-    FileManager(std::string& fileName);
+    FileManager(const std::string& fileName);
 
-    void saveVault(const std::vector <VaultEntry>& vault);
-    const std::vector <VaultEntry> LoadData();
+    bool saveVault(const std::vector <VaultEntry>& vault);
+    bool LoadData(std::vector <VaultEntry>& vault);
 };

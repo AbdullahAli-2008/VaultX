@@ -10,6 +10,9 @@ enum class Category {
     OTHER
 };
 
+std::string categoryToString(Category category);
+Category stringToCategory(const std::string& str); 
+
 class VaultEntry {
 private:
     std::string title;
@@ -30,13 +33,13 @@ public:
         const Category& category = Category::OTHER);
 
 
-    const std::string& getTitle();
-    const std::string& getUsername();
-    const std::string& getPassword();
-    const std::string& getURL();
-    const std::string& getNotes();
-    const std::string& getDate();
-    Category getCategory();
+    const std::string& getTitle() const;
+    const std::string& getUsername() const;
+    const std::string& getPassword() const;
+    const std::string& getURL() const;
+    const std::string& getNotes() const;
+    const std::string& getDate() const;
+    Category getCategory() const;
 
     void setTitle(const std::string& title);
     void setUsername(const std::string& username);
