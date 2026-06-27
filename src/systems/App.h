@@ -13,5 +13,7 @@ public:
     bool init();
     bool run();
     bool shutdown();
+    void addEntry(const VaultEntry& entry);
 };
+
 

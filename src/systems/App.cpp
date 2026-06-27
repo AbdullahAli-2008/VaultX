@@ -15,7 +15,7 @@ bool App::init(){
 
     fileManager.LoadData(temp);
 
-    for (int i = 0; i < temp.size(); i++) 
+    for (size_t i = 0; i < temp.size(); i++) 
         vault.addEntry(temp[i]);
 
     return true;
@@ -34,4 +34,8 @@ bool App::shutdown(){
 
 bool App::run () {
     return true;
+}
+
+void App::addEntry(const VaultEntry& entry) {
+    vault.addEntry(entry);
 }

@@ -13,7 +13,7 @@ vector<VaultEntry> Vault::searchEntries(const string& query){
     
     vector <VaultEntry> results;
 
-    for(int i = 0; i < vault.size(); i++) {
+    for(size_t i = 0; i < vault.size(); i++) {
         if (vault[i].getTitle().find(query) != string::npos ||
         vault[i].getUsername().find(query) != string::npos ||
         vault[i].getNotes().find(query) != string::npos

@@ -22,7 +22,7 @@ bool FileManager::saveVault(const vector <VaultEntry>& vault) {
     ofstream file(fileName);
     if(!file.is_open()) {return false;}   
 
-    for (int i = 0; i < vault.size(); i++) {
+    for (size_t i = 0; i < vault.size(); i++) {
         file << "TITLE:" << vault[i].getTitle() << "\n";
         file << "USERNAME:" << vault[i].getUsername() << "\n";
         file << "PASSWORD:" << vault[i].getPassword() << "\n";
