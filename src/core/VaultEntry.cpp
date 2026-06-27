@@ -15,7 +15,7 @@ VaultEntry::VaultEntry(const string& title,
         notes(notes),
         date(date),
         category(category) 
-        {}
+    {}
 
 const string& VaultEntry::getTitle() const      {return title;}
 const string& VaultEntry::getUsername() const   {return username;}

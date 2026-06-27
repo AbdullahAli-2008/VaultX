@@ -1,6 +1,5 @@
 #include <fstream>
 #include <sstream>
-#include "VaultEntry.h"
 #include "FileManager.h"
 #include <string>
 #include <vector>

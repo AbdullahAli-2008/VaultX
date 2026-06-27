@@ -1,5 +1,5 @@
 #pragma once
-#include "VaultEntry.h"
+#include "../core/VaultEntry.h"
 #include <string>
 #include <vector>
 
