@@ -1,6 +1,8 @@
 #include"App.h"
+#include"../ui/Theme.h"
 #include <string>
 #include <vector>
+#include <raylib.h>
 #include <iostream>
 using namespace std;
 
@@ -33,6 +35,20 @@ bool App::shutdown(){
 }
 
 bool App::run () {
+
+    SetConfigFlags(FLAG_WINDOW_RESIZABLE);
+    InitWindow(1280, 720, "VaultX");
+    SetTargetFPS(60);
+
+    while(!WindowShouldClose()){
+        BeginDrawing();
+        ClearBackground(BG_PRIMARY);
+        // screens will be drawn here
+        EndDrawing();
+
+    }
+
+    CloseWindow();
     return true;
 }
 

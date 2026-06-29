@@ -1,0 +1,16 @@
+TITLE:Netflix
+USERNAME:myemail@gmail.com
+PASSWORD:abc123
+URL:netflix.com
+NOTES:streaming
+CATEGORY:LOGIN
+DATE:2024-01-15
+===
+TITLE:Netflix
+USERNAME:myemail@gmail.com
+PASSWORD:abc123
+URL:netflix.com
+NOTES:streaming
+CATEGORY:LOGIN
+DATE:2024-01-15
+===
