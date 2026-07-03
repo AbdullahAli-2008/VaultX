@@ -270,8 +270,8 @@ ifeq ($(PLATFORM),PLATFORM_DESKTOP)
     ifeq ($(PLATFORM_OS),LINUX)
         # Reset everything.
         # Precedence: immediately local, installed version, raysan5 provided libs -I$(RAYLIB_H_INSTALL_PATH) -I$(RAYLIB_PATH)/release/include
-        INCLUDE_PATHS = -I$(RAYLIB_H_INSTALL_PATH) -isystem. -isystem$(RAYLIB_PATH)/src -isystem$(RAYLIB_PATH)/release/include -isystem$(RAYLIB_PATH)/src/external
-    endif
+        INCLUDE_PATHS = -I$(RAYLIB_H_INSTALL_PATH) -isystem. -isystem$(RAYLIB_PATH)/src -isystem$(RAYLIB_PATH)/release/include -isystem$(RAYLIB_PATH)/src/external -I./rlImGui -I./rlImGui/imgui
+    endif3
 endif
 
 # Define library paths containing required libs.
@@ -370,7 +370,7 @@ OBJ_DIR = obj
 # Define all object files from source files
 SRC = $(call rwildcard, *.c, *.h)
 #OBJS = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
-OBJS=src/*.cpp src/core/*.cpp src/systems/*.cpp src/ui/*.cpp -I./rlImGui -I./rlImGui/imgui
+OBJS=src/*.cpp src/core/*.cpp src/systems/*.cpp src/ui/*.cpp rlImGui/rlImGui.cpp rlImGui/imgui/imgui.cpp rlImGui/imgui/imgui_draw.cpp rlImGui/imgui/imgui_tables.cpp rlImGui/imgui/imgui_widgets.cpp
 
 # For Android platform we call a custom Makefile.Android
 ifeq ($(PLATFORM),PLATFORM_ANDROID)
