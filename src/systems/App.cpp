@@ -7,7 +7,7 @@
 using namespace std;
 
 App::App(const string& fileLocation) :
-    fileManager(fileLocation)
+    fileManager(fileLocation), currentScene(AppScreen::LOGIN)
 {}
 
 bool App::init(){
@@ -40,12 +40,33 @@ bool App::run () {
     InitWindow(1280, 720, "VaultX");
     SetTargetFPS(60);
 
+    LoginScreen login;
+
     while(!WindowShouldClose()){
         BeginDrawing();
-        ClearBackground(BG_PRIMARY);
-        // screens will be drawn here
-        EndDrawing();
 
+        switch (currentScene) {
+
+            case AppScreen::LOGIN: {
+                ClearBackground(BG_PRIMARY);
+                currentScene = login.update();
+                login.draw();
+                break;
+            }
+
+            case AppScreen::DASHBOARD: {
+                ClearBackground(WHITE);
+                break;
+            }
+
+            case AppScreen::EDITOR: {
+
+                break;
+            }
+
+        }
+
+        EndDrawing();
     }
 
     CloseWindow();
