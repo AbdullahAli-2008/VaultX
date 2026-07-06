@@ -271,7 +271,7 @@ ifeq ($(PLATFORM),PLATFORM_DESKTOP)
         # Reset everything.
         # Precedence: immediately local, installed version, raysan5 provided libs -I$(RAYLIB_H_INSTALL_PATH) -I$(RAYLIB_PATH)/release/include
         INCLUDE_PATHS = -I$(RAYLIB_H_INSTALL_PATH) -isystem. -isystem$(RAYLIB_PATH)/src -isystem$(RAYLIB_PATH)/release/include -isystem$(RAYLIB_PATH)/src/external -I./rlImGui -I./rlImGui/imgui
-    endif3
+    endif
 endif
 
 # Define library paths containing required libs.
