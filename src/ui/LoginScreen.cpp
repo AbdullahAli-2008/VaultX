@@ -14,28 +14,13 @@ LoginScreen::LoginScreen() {
 }
 
 AppScreen LoginScreen::update(){
-    //Character Input
-    int ch = GetCharPressed();
-    while(ch >0){
-        passwordInput += ch;
-        ch = GetCharPressed();  //<---Calling it in loop again cus Multiple characters in one frame pressed
-    }
-
-    //BackSpace
-    if(IsKeyPressed(KEY_BACKSPACE) && !passwordInput.empty())
-        passwordInput.pop_back();
 
     //Enter/LockTouched
     lockHitBox = {(float)(3 * GetScreenWidth())/4, (float)GetScreenHeight()/2, lock.width * LockScale, lock.height * LockScale};
 
     if(IsKeyPressed(KEY_ENTER) || (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && CheckCollisionPointRec(GetMousePosition(), lockHitBox))) 
     {
-        if(passwordInput == password) {
-            return AppScreen::DASHBOARD;
-        } else {
-            showError = true;
-            passwordInput = "";
-        }
+        //We Compare here
     }
     return AppScreen::LOGIN;
 }
