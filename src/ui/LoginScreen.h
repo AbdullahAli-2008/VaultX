@@ -4,13 +4,13 @@
 
 class LoginScreen : public Screen {
 private:
-    std::string password;
-    std::string passwordInput;
+    char password[17];
+    char passwordInput[17];
+    ImGuiWindowFlags flags;
     bool showError;
     Texture2D logo;
     Texture2D lock;
     Rectangle lockHitBox;
-    
 public:
     LoginScreen();
     AppScreen update();

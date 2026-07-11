@@ -6,6 +6,7 @@
 #include <iostream>
 using namespace std;
 
+
 App::App(const string& fileLocation) :
     fileManager(fileLocation), currentScene(AppScreen::LOGIN)
 {}
@@ -39,11 +40,13 @@ bool App::run () {
     SetConfigFlags(FLAG_WINDOW_RESIZABLE);
     InitWindow(1280, 720, "VaultX");
     SetTargetFPS(60);
-
+    rlImGuiSetup(true);
+    
     LoginScreen login;
 
     while(!WindowShouldClose()){
         BeginDrawing();
+        rlImGuiBegin();
 
         switch (currentScene) {
 
@@ -60,15 +63,17 @@ bool App::run () {
             }
 
             case AppScreen::EDITOR: {
-
+                ClearBackground(WHITE);
                 break;
             }
 
         }
 
+        rlImGuiEnd();
         EndDrawing();
     }
 
+    rlImGuiShutdown();
     CloseWindow();
     return true;
 }

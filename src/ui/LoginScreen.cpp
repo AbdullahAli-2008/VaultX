@@ -1,17 +1,21 @@
 #include "LoginScreen.h"
+#include <cstring>
+#include <iostream>
+using namespace ImGui;
 using namespace std;
 
 float LogoScale = 0.5;
 float LockScale = 0.1;
 
 LoginScreen::LoginScreen() {
-    password = "password123";
-    passwordInput = "";
+    strcpy(password, "password123");
+    strcpy(passwordInput, "");
     showError = false;
     lock = LoadTexture("assets/lock.png");
     logo = LoadTexture("assets/vault_backgroundless.png");
     lockHitBox = {(float)(3 * GetScreenWidth())/4, (float)GetScreenHeight()/2, lock.width * LockScale, lock.height * LockScale};
-}
+    flags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoNav;
+}   
 
 AppScreen LoginScreen::update(){
 
@@ -20,7 +24,12 @@ AppScreen LoginScreen::update(){
 
     if(IsKeyPressed(KEY_ENTER) || (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && CheckCollisionPointRec(GetMousePosition(), lockHitBox))) 
     {
-        //We Compare here
+        if(!strcmp(password, passwordInput)) {
+            return AppScreen::DASHBOARD;
+        }
+        else {
+            showError = true;
+        }
     }
     return AppScreen::LOGIN;
 }
@@ -41,6 +50,17 @@ void LoginScreen::draw(){
     if(showError) {
         DrawText("Incorrect password", 20, GetScreenHeight() - 20, 15, DANGER);
     }
+
+
+    SetNextWindowSize(ImVec2(GetScreenWidth(), GetScreenHeight()));
+    SetNextWindowPos(ImVec2(0, 0));
+
+    Begin("LoginScreen", NULL, flags);
+        SetWindowFontScale(2.0f);
+        SetCursorPos(ImVec2(GetScreenWidth()/2 - GetScreenWidth()/10, GetScreenHeight()/2 - GetScreenHeight()/20));
+        SetNextItemWidth(GetScreenWidth()/5);
+        InputTextWithHint("##Password_field", "Enter Password", passwordInput, 17, ImGuiInputTextFlags_Password);
+    End();
 }
 
 LoginScreen::~LoginScreen(){
